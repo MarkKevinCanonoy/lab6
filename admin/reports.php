@@ -66,6 +66,8 @@ try {
                     <li><a href="enrollments.php"><i class="fa-solid fa-user-plus"></i> Enrollments</a></li>
                     <li><a href="schedules.php"><i class="fa-regular fa-calendar"></i> Schedules</a></li>
                     <li><a href="reports.php" class="active"><i class="fa-regular fa-file-lines"></i> Reports</a></li>
+                    <li><a href="send_announcement.php"><i class="fa-solid fa-bullhorn"></i> Send Announcement</a></li>
+                    <li><a href="notification_logs.php"><i class="fa-solid fa-clock-rotate-left"></i> Announcement Logs</a></li>                    
                 </ul>
             </nav>
             
