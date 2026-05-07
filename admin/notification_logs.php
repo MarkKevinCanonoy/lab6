@@ -48,7 +48,6 @@ $logs = $pdo->query("
                     <div class="avatar"><?php echo substr($_SESSION['name'], 0, 1); ?></div>
                     <div class="user-info">
                         <span class="user-name"><?php echo htmlspecialchars($_SESSION['name']); ?></span>
-                        <span class="user-email">admin@test.com</span> 
                     </div>
                 </div>
                 <a href="../api/logout.php" class="logout-btn">

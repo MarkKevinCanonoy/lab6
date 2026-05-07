@@ -37,7 +37,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->setFrom('kevinixmarkix@gmail.com', 'Instructor');
         $mail->isHTML(true);
         $mail->Subject = $title;
-        $mail->Body    = nl2br($message);
+        
+        $emailBody = '
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #333; border-radius: 8px; overflow: hidden; background-color: #1a1a1a; color: #eeeeee;">
+            <div style="background-color: #ff69b4; padding: 20px; text-align: center;">
+                <h2 style="color: #121212; margin: 0; font-size: 24px;">New Class Announcement</h2>
+            </div>
+            <div style="padding: 30px; background-color: #2a2a2a;">
+                <h3 style="color: #ff69b4; margin-top: 0; font-size: 20px;">' . htmlspecialchars($title) . '</h3>
+                <p style="font-size: 16px; line-height: 1.6; color: #cccccc; margin-bottom: 0;">' . nl2br(htmlspecialchars($message)) . '</p>
+            </div>
+            <div style="padding: 15px; text-align: center; background-color: #1a1a1a; border-top: 1px solid #333;">
+                <p style="margin: 0; font-size: 12px; color: #777;">This is an automated message from the Attendance System. Please do not reply directly to this email.</p>
+            </div>
+        </div>';
+
+        $mail->Body = $emailBody;
 
         $hasRecipients = false;
         while ($row = $emailQuery->fetch(PDO::FETCH_ASSOC)) {
@@ -92,7 +107,6 @@ $subjects = $pdo->query("SELECT * FROM subjects");
                     <div class="avatar"><?php echo substr($_SESSION['name'], 0, 1); ?></div>
                     <div class="user-info">
                         <span class="user-name"><?php echo htmlspecialchars($_SESSION['name']); ?></span>
-                        <span class="user-email">admin@test.com</span> 
                     </div>
                 </div>
                 <a href="../api/logout.php" class="logout-btn">
